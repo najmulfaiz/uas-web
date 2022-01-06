@@ -12,11 +12,13 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 col-lg-6 col-xl-5">
-                    <img src="{{ asset('images/patikab-logo.png') }}" class="mx-auto d-block mb-4" style="width: 72px;">
                     <div class="text-center mb-4">
-                        <h4>Sistem Pendaftaran Vaksinasi <strong>COVID-19</strong></h4>
+                        <h4>{{ config('app.name', 'Laravel') }} <strong>COVID-19</strong></h4>
                     </div>
                     <div class="card">
+                        <div class="card-header bg-light text-center">
+                            <h5 class="m-0">Login</h5>
+                        </div>
                         <div class="card-body">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 @csrf

@@ -15,6 +15,14 @@ class CreateJadwalsTable extends Migration
     {
         Schema::create('jadwals', function (Blueprint $table) {
             $table->id();
+            $table->date('tanggal');
+            $table->time('waktu_mulai');
+            $table->time('waktu_selesai');
+            $table->bigInteger('jenis_vaksin_id');
+            $table->string('penyelenggara');
+            $table->string('lat');
+            $table->string('lng');
+            $table->string('alamat');
             $table->timestamps();
         });
     }

@@ -22,8 +22,12 @@
                 <table class="table table-bordered striped" id="table_jadwal">
                     <thead>
                         <th>No</th>
-                        <th>Name</th>
-                        <th>E-Mail</th>
+                        <th>Tanggal</th>
+                        <th>Waktu</th>
+                        <th>Vaksin</th>
+                        <th>Dosis</th>
+                        <th>Penyelenggara</th>
+                        <th>Tempat</th>
                         <th>Aksi</th>
                     </thead>
                     <tbody></tbody>
@@ -53,12 +57,28 @@
                     }
                 },
                 {
-                    data: 'name',
-                    name: 'name',
+                    data: 'tanggal',
+                    name: 'tanggal',
                 },
                 {
-                    data: 'email',
-                    name: 'email',
+                    data: 'waktu',
+                    name: 'waktu',
+                },
+                {
+                    data: 'jenis_vaksin',
+                    name: 'jenis_vaksin',
+                },
+                {
+                    data: 'dosis',
+                    name: 'dosis',
+                },
+                {
+                    data: 'penyelenggara',
+                    name: 'penyelenggara',
+                },
+                {
+                    data: 'alamat',
+                    name: 'alamat',
                 },
                 {
                     data: 'aksi',

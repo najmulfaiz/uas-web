@@ -5,19 +5,19 @@
             <div class="navbar-brand-box">
                 <a href="{{ url('/') }}" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo.svg') }}" alt="" height="22">
+                        <span class="text-dark" style="font-size: 1.5rem">KV</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-dark.png') }}" alt="" height="17">
+                        <span class="text-dark" style="font-size: 1.5rem">Kabar Vaksin</span>
                     </span>
                 </a>
 
                 <a href="{{ url('/') }}" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="{{ asset('assets/images/logo-light.svg') }}" alt="" height="22">
+                        <span class="text-light" style="font-size: 1.5rem">KV</span>
                     </span>
                     <span class="logo-lg">
-                        <img src="{{ asset('assets/images/logo-light.png') }}" alt="" height="19">
+                        <span class="text-light" style="font-size: 1.5rem">Kabar Vaksin</span>
                     </span>
                 </a>
             </div>

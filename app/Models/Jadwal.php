@@ -11,6 +11,22 @@ class Jadwal extends Model
 
     protected $fillable = [
         'tanggal',
-        'status',
+        'waktu_mulai',
+        'waktu_selesai',
+        'jenis_vaksin_id',
+        'penyelenggara',
+        'lat',
+        'lng',
+        'alamat',
     ];
+
+    public function jenis_vaksin()
+    {
+        return $this->belongsTo(JenisVaksin::class);
+    }
+
+    public function jadwal_dosis()
+    {
+        return $this->hasMany(JadwalDosis::class);
+    }
 }

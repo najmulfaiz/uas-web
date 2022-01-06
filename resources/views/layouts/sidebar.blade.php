@@ -29,23 +29,6 @@
                     </a>
                 </li>
 
-                <li>
-                    <a href="{{ route('user.index') }}" class="waves-effect">
-                        <i class="bx bx-group"></i>
-                        <span key="t-pendaftar">Pendaftar</span>
-                    </a>
-                </li>
-
-                {{-- <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="bx bx-share-alt"></i>
-                        <span key="t-multi-level">Multi Level</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);" key="t-level-1-1">Level 1.1</a></li>
-                    </ul>
-                </li> --}}
-
             </ul>
         </div>
         <!-- Sidebar -->

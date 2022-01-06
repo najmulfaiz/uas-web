@@ -12,7 +12,7 @@
     @include('layouts.alert')
 
     <div class="row">
-        <div class="col-sm-4 col-xs-12">
+        <div class="col-md-6 col-xs-12">
             <div class="card">
                 <div class="card-body">
                     <form action="{{ route('jadwal.store') }}" method="post">
@@ -22,8 +22,58 @@
                             <input type="date" name="tanggal" class="form-control" value="{{ old('tanggal') }}">
                         </div>
                         <div class="form-group mb-3">
-                            <label for="status">Tempat</label>
-                            <input type="email" name="status" class="form-control" value="{{ old('status') }}">
+                            <label for="status">Waktu</label>
+                            <div class="input-group mb-3">
+                                <input type="time" name="waktu_mulai" class="form-control">
+                                <span class="input-group-text">sampai</span>
+                                <input type="time" name="waktu_selesai" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status">Vaksin</label>
+                            <select name="jenis_vaksin" id="jenis_vaksin" class="form-control">
+                                <option value=""> -- Pilih Jenis Vaksin -- </option>
+                                @foreach ($vaksin->sortBy('nama') as $k => $vaksin)
+                                <option value="{{ $vaksin->id }}">{{ $vaksin->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="status">Dosis</label>
+                            <div>
+                                @foreach($dosis as $k => $dosis)
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" id="dosis_{{ $k }}" name="dosis[]" value="{{ $dosis->id }}">
+                                    <label class="form-check-label" for="dosis_{{ $k }}">{{ $dosis->nama }}</label>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="penyelenggara">Penyelenggara</label>
+                            <input type="text" name="penyelenggara" class="form-control" value="{{ old('penyelenggara') }}">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="map">Map</label>
+                            <div id="map" style="width: 100%; height: 200px;"></div>
+                            <div class="row mt-3">
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="lat">Latitude</label>
+                                        <input type="text" class="form-control" name="lat" id="lat" placeholder="Latitude" value="{{ old('lat') ?? '-6.753394004106857' }}" readonly>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xs-12">
+                                    <div class="form-group">
+                                        <label for="lng">Longitude</label>
+                                        <input type="text" class="form-control" name="lng" id="lng" placeholder="Longitude" value="{{ old('lng') ?? '111.04004663848877' }}" readonly>
+                                    </div>        
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" name="alamat" id="alamat" class="form-control" value="{{ old('alamat') ?? 'Alun-Alun Pati' }}">
                         </div>
                         <div class="form-group">
                             <a href="{{ route('jadwal.index') }}" class="btn btn-secondary btn-sm">Kembali</a>
@@ -35,4 +85,43 @@
         </div>
     </div>
 
+@endsection
+
+@section('script')
+<script>
+    var lat = {{ old('lat') ?? -6.753394004106857 }};
+    var lng = {{ old('lng') ?? 111.04004663848877 }};
+
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: lat, lng: lng },
+            zoom: 15,
+        });
+        const geocoder = new google.maps.Geocoder();
+        var marker = new google.maps.Marker({
+            position: { lat: lat, lng: lng },
+            map,
+            draggable:true,
+        });
+        google.maps.event.addListener(marker, 'dragend', function (event) {
+            document.getElementById("lat").value = this.getPosition().lat();
+            document.getElementById("lng").value = this.getPosition().lng();
+            geocodePosition(geocoder, this.getPosition());
+        });
+    }
+
+    function geocodePosition(geocoder, pos) {
+        geocoder.geocode({
+            latLng: pos
+        }, function(responses) {
+            if (responses && responses.length > 0) {
+                document.getElementById("alamat").value = responses[0].formatted_address;
+            } else {
+                console.log('Cannot determine address at this location.');
+            }
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfimiFekDq8jEbIdUVWxqOXIRfulaQ7VU&callback=initMap">
+</script>
 @endsection
