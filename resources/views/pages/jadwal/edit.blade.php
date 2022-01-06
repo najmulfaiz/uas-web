@@ -123,6 +123,6 @@
         });
     }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfimiFekDq8jEbIdUVWxqOXIRfulaQ7VU&callback=initMap">
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_CONSOLE_API&callback=initMap">
 </script>
 @endsection
