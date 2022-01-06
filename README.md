@@ -1,6 +1,6 @@
 # Kabar Vaksin
 
-Kabar vaksin adalah platform untuk berbagi kabar mengenai jadwal vaksinasi Covid-19.
+Kabar vaksin adalah platform untuk berbagi kabar mengenai jadwal vaksinasi Covid-19. Project ini digunakan sebagai tugas akhir matakuliah Rekayasa Web
 
 ## Getting Started
 
